@@ -1,12 +1,16 @@
 """
 Minimal character-level Vanilla RNN model. Written by Andrej Karpathy (@karpathy)
 BSD License
+
+Adapted by Motoki Wu (@plusepsilon)
+- unicode compat.
+- added example samples once finished training
 """
 import numpy as np
 
 # data I/O
 data = open('input.txt', 'r').read() # should be simple plain text file
-chars = list(set(data))
+chars = list(set(data.decode('utf-8')))
 data_size, vocab_size = len(data), len(chars)
 print 'data has %d characters, %d unique.' % (data_size, vocab_size)
 char_to_ix = { ch:i for i,ch in enumerate(chars) }
@@ -110,3 +114,9 @@ while True:
 
   p += seq_length # move data pointer
   n += 1 # iteration counter 
+
+with open('samples.txt', 'w') as f:
+  for i in inputs:
+    sent = sample(hprev, i, 200)
+    f.write(sent.encode('utf-8'))
+    f.write('\n')
