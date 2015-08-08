@@ -1,18 +1,18 @@
 # Murakami Haruki char-RNN Bot
 
-村上春樹char-RNNボットを遊びがてら作りました。
+村上春樹char-RNNボットを遊びがてらつくっちゃいました。
 
-Using @karpathy's [char-RNN model](https://gist.github.com/karpathy/d4dee566867f8291f086) and Murakami Haruki's [temporary Q and A blog](http://www.welluneednt.com) as the Japanese training corpus, this code creates sample text from the contemporary writer.
+Generates sample text using @karpathy's [char-RNN model](https://gist.github.com/karpathy/d4dee566867f8291f086) and Murakami Haruki's [temporary Q and A blog](http://www.welluneednt.com) as the Japanese training corpus.
 
 Scrape the website by `python scrape.py`.
 
-Simply run `python min-char-rnn.py` to create some samples. This runs an infinite loop and doesn't save model results yet.
+Simply run `python min-char-rnn.py` to print out some samples. This runs an infinite loop and doesn't save any results.
 
 My favorite line so far:
 
 **僕の小説でも楽しいか誌はそれを文章のヨーションに与えるとめにンっていたい世界がとても書きますか。**
 
-Which *roughly* traslates to:
+Which *roughly* translates to:
 
 **Whether my novels are entertaining is based on putting Yotion(?) into the writing.**
 
