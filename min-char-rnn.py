@@ -116,8 +116,4 @@ while True:
   n += 1 # iteration counter 
 
 if __name__ == '__main__':
-  with open('samples.txt', 'w') as f:
-    for i in inputs:
-      sent = sample(hprev, i, 200)
-      f.write(sent.encode('utf-8'))
-      f.write('\n')
+  pass
