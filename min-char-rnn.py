@@ -9,8 +9,8 @@ Adapted by Motoki Wu (@plusepsilon)
 import numpy as np
 
 # data I/O
-data = open('input.txt', 'r').read() # should be simple plain text file
-chars = list(set(data.decode('utf-8')))
+data = open('input.txt', 'r').read().decode('utf-8') # should be simple plain text file
+chars = list(set(data))
 data_size, vocab_size = len(data), len(chars)
 print 'data has %d characters, %d unique.' % (data_size, vocab_size)
 char_to_ix = { ch:i for i,ch in enumerate(chars) }
@@ -98,7 +98,7 @@ while True:
   if n % 100 == 0:
     sample_ix = sample(hprev, inputs[0], 200)
     txt = ''.join(ix_to_char[ix] for ix in sample_ix)
-    print '----\n %s \n----' % (txt, )
+    print '----\n %s \n----' % (txt.encode('utf-8'), )
 
   # forward seq_length characters through the net and fetch gradient
   loss, dWxh, dWhh, dWhy, dbh, dby, hprev = lossFun(inputs, targets, hprev)
@@ -115,8 +115,9 @@ while True:
   p += seq_length # move data pointer
   n += 1 # iteration counter 
 
-with open('samples.txt', 'w') as f:
-  for i in inputs:
-    sent = sample(hprev, i, 200)
-    f.write(sent.encode('utf-8'))
-    f.write('\n')
+if __name__ == '__main__':
+  with open('samples.txt', 'w') as f:
+    for i in inputs:
+      sent = sample(hprev, i, 200)
+      f.write(sent.encode('utf-8'))
+      f.write('\n')
